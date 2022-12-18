@@ -1,0 +1,25 @@
+.nav {
+    max-width: 20%;
+    color: #262626;
+    height: 100vh;
+    position: fixed;
+    border-right-style: solid;
+    border-right-color: #8f8f93;
+    border-right-width: 2px;
+}
+
+.nav a {
+    color: #262626;
+    padding-left: 10%;
+    font-size: 16px;
+    text-align: left;
+}
+
+.nav a:hover {
+    color: black;
+    font-size: 110%;
+}
+
+.side-nav a:active {
+    color: black;
+}
