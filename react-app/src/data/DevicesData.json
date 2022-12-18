@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Washing machine",
+    "type": "washing_machine",
+    "description": "Electrolux washing machine 7-10kg",
+    "maxEnergy": 7.1,
+    "on": true
+  },
+  {
+    "id": "2",
+    "name": "Dishwasher",
+    "type": "dishwasher",
+    "description": "Electrolux dishwasher 8 programs",
+    "maxEnergy": 5.2,
+    "on": false
+  },
+  {
+    "id": "3",
+    "name": "Electric oven",
+    "type": "oven",
+    "description": "Philips electric oven",
+    "maxEnergy": 5.5,
+    "on": true
+  },
+  {
+    "id": "4",
+    "name": "Air conditioner",
+    "type": "air_conditioner",
+    "description": "Northwind air conditioner",
+    "maxEnergy": 4.3,
+    "on": false
+  },
+  {
+    "id": "5",
+    "name": "Light bulb",
+    "type": "light_bulb",
+    "description": "Bosch' smart light bulbs",
+    "maxEnergy": 1.2,
+    "on": false
+  },
+  {
+    "id": "6",
+    "name": "Water heater",
+    "type": "water_heater",
+    "description": "Motan water heater 120L",
+    "maxEnergy": 35.2,
+    "on": true
+  }
+]

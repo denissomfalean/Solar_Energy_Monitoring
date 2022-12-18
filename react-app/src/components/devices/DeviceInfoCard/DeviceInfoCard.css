@@ -1,0 +1,73 @@
+.edit-icon {
+    margin-top: 2%;
+    margin-left: 60%;
+    position: absolute;
+}
+
+.edit-icon:hover {
+    margin-top: 2%;
+    margin-left: 60%;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.card {
+    text-align: center;
+    width: 300px;
+    max-width: 300px;
+    min-height: 320px;
+    max-height: 320px;
+}
+
+.card:hover {
+    /*margin: 1%;*/
+    border-width: 2px;
+}
+
+.card-body {
+    text-align: left;
+}
+
+.card-img {
+    margin: 0;
+    padding: 10px;
+    max-width: fit-content;
+}
+
+.card-img:hover {
+    margin: 0;
+    padding: 10px;
+}
+
+.warn {
+    color: darkred;
+}
+
+.ok {
+    color: green;
+}
+
+.oven {
+    background-color: #eea38c;
+}
+
+.air_conditioner {
+    background-color: #8fe8fc;
+}
+
+.light_bulb {
+    background-color: #ffdb9d;
+}
+
+.water_heater {
+    background-color: #fcb1b1;
+}
+
+.washing_machine {
+    background-color: #979bef;
+}
+
+.dishwasher {
+    background-color: #92e1d6;
+}
