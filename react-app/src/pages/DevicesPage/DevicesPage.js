@@ -1,9 +1,9 @@
 import "./DevicesPage.css";
 import {SideNavigation} from "../../layouts/SideNavigation";
 import {DevicesGridLayout} from "../../components/devices/DevicesGridLayout/DevicesGridLayout";
-import devicesInfo from '../../data/DevicesData.json'
-import deviceStatus from '../../data/DeviceStatusData.json'
-import sensorData from '../../data/SensorData.json'
+import devicesInfo from '../../resources/data/DevicesData.json'
+import deviceStatus from '../../resources/data/DeviceStatusData.json'
+import sensorData from '../../resources/data/SensorData.json'
 import {Button} from "react-bootstrap";
 
 export const DevicesPage = () => {
