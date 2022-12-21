@@ -5,11 +5,17 @@ import devicesInfo from '../../resources/data/DevicesData.json'
 import deviceStatus from '../../resources/data/DeviceStatusData.json'
 import sensorData from '../../resources/data/SensorData.json'
 import {Button} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
+import {DeviceForm} from "../../components/devices/DeviceForm/DeviceForm";
+import {useState} from "react";
 
 export const DevicesPage = () => {
+    const [showForm, setShowForm] = useState(false);
+    const navigate = useNavigate();
+
     const onAddDevice = () => {
-        // todo
         console.log(`Adding a new device!`);
+        setShowForm(true);
     }
 
     return (
@@ -21,6 +27,7 @@ export const DevicesPage = () => {
                     <Button variant={"outline-secondary mt-3"} onClick={onAddDevice}> + New</Button>
                 </div>
                 <hr/>
+                <DeviceForm show={showForm}/>
             <DevicesGridLayout info={devicesInfo}
             status={deviceStatus}
             sensorData={sensorData}/>
