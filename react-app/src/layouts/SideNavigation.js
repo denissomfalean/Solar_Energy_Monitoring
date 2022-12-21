@@ -12,7 +12,7 @@ import {
 } from "react-icons/bs";
 
 export const SideNavigation = () => {
-    const username = getSessionItem(SessionStorageKeys.USER);
+    const user = getSessionItem(SessionStorageKeys.USER);
     return (
         <div>
             <Nav defaultActiveKey="/client" className="flex-column">
@@ -22,7 +22,7 @@ export const SideNavigation = () => {
                 <Nav.Link href="/devices"><BsFillLightbulbFill/> Devices</Nav.Link>
                 <Nav.Link href="/costs"><BsCashStack/> Cost Management</Nav.Link>
                 <Nav.Link href="/reports"><BsGraphUp/> Reports</Nav.Link>
-                <Nav.Link href="/account"><BsPersonCircle/> {username}</Nav.Link>
+                <Nav.Link href="/account"><BsPersonCircle/> {user.name}</Nav.Link>
                 <Nav.Link href="/logout"><BsArrowBarRight/> Logout</Nav.Link>
             </Nav>
         </div>
