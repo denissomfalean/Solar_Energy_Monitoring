@@ -11,10 +11,10 @@ export const ProtectedPage = (props) => {
         details: "You cannot view this page, because you do not have sufficient" +
             " access rights."
     }
-    return (isLoggedIn() ?
+    return (!isLoggedIn() ?
             <ErrorPage error={notLoggedInError}/>
             :
-            props.authority === null || isAuthorized(props.authority) ?
+            props.authority === undefined || isAuthorized(props.authority) ?
                 // if authorized return the component
                 props.component
                 : // if not authorized return an error page

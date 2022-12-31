@@ -1,10 +1,10 @@
 import './App.css';
-import {DevicesPage} from "../DevicesPage/DevicesPage";
+import {Router} from "../../routes/Router";
 
 const App = () => {
     return (
         <div className="App">
-            <DevicesPage/>
+            <Router/>
         </div>
     );
 }

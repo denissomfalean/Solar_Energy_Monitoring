@@ -11,7 +11,8 @@ export const DeviceInfoCard = (props) => {
         <Card>
             <div className={props.info.type}>
                 <Card.Header>
-                    <BsPencilSquare className={"edit-icon"} onClick={() => props.onEditDevice(props.info.id)}/>
+                    <BsPencilSquare className={"edit-icon"} onClick={() => props.onEditDevice(props.info.id)}
+                    data-toggle={"tooltip"} title={"Edit"}/>
                     <Card.Img src={imgPath} onClick={() => props.onSelectDevice(props.info.id)}/>
                 </Card.Header>
             </div>
@@ -20,7 +21,7 @@ export const DeviceInfoCard = (props) => {
                 <Card.Subtitle>{props.info.description}</Card.Subtitle>
                 <p>Max: {props.info.maxEnergy} kW/h</p>
                 <div className={"d-flex justify-content-between align-items-center"}>
-                    <Toggle defaultChecked={props.status.on}
+                    <Toggle defaultChecked={props.status!== undefined? props.status.on:false}
                             onChange={() => props.onToggleDevice(props.info.id)}/>
                     <div className={"d-flex justify-content-end"}>
                         <BsBarChartLine/>
