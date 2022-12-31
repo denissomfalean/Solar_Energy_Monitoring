@@ -11,7 +11,8 @@ export const DeviceInfoCard = (props) => {
         <Card>
             <div className={props.info.type}>
                 <Card.Header>
-                    <BsPencilSquare className={"edit-icon"} onClick={() => props.onEditDevice(props.info.id)}/>
+                    <BsPencilSquare className={"edit-icon"} onClick={() => props.onEditDevice(props.info.id)}
+                    data-toggle={"tooltip"} title={"Edit"}/>
                     <Card.Img src={imgPath} onClick={() => props.onSelectDevice(props.info.id)}/>
                 </Card.Header>
             </div>

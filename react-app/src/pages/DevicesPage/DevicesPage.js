@@ -5,17 +5,25 @@ import devicesInfo from '../../resources/data/DevicesData.json'
 import deviceStatus from '../../resources/data/DeviceStatusData.json'
 import sensorData from '../../resources/data/SensorData.json'
 import {Button, Modal} from "react-bootstrap";
-import {useNavigate} from "react-router-dom";
 import {DeviceForm} from "../../components/devices/DeviceForm/DeviceForm";
 import {useState} from "react";
 
 export const DevicesPage = () => {
     const [showForm, setShowForm] = useState(false);
-    const navigate = useNavigate();
+    const [selectedDevice, setSelectedDevice] = useState(0);
 
     const onAddDevice = () => {
         console.log(`Adding a new device!`);
         setShowForm(true);
+    }
+
+    const onEditDevice = (id) => {
+        console.log(`Edit device with id ${id}!`);
+        const existingDevice = devicesInfo.find(d => d.id === id);
+        if (existingDevice !== undefined) {
+            setSelectedDevice(existingDevice);
+            setShowForm(true);
+        }
     }
 
     return (
@@ -32,13 +40,15 @@ export const DevicesPage = () => {
                         <Modal.Title>Add device</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <DeviceForm setShow={setShowForm}/>
+                        <DeviceForm setShow={setShowForm} data={selectedDevice}/>
                     </Modal.Body>
                 </Modal>
 
                 <DevicesGridLayout info={devicesInfo}
                                    status={deviceStatus}
-                                   sensorData={sensorData}/>
+                                   sensorData={sensorData}
+                                   onEdit={onEditDevice}
+                />
             </div>
         </div>
     )

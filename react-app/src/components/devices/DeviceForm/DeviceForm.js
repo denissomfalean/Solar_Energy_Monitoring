@@ -23,11 +23,11 @@ export const DeviceForm = (props) => {
 
     return (
         <Form onSubmit={onSave}>
-            <InputGroup>
+            <InputGroup className={"mt-2 mb-2"}>
                 <InputGroup.Text>Name</InputGroup.Text>
                 <FormControl type={"input"} onChange={e => setName(e.target.value)} required/>
             </InputGroup>
-            <InputGroup>
+            <InputGroup className={"mt-2 mb-2"}>
                 <InputGroup.Text>Type</InputGroup.Text>
                 <FormSelect type={"select"} onChange={e => setType(e.target.key)} required>
                     {
@@ -36,16 +36,16 @@ export const DeviceForm = (props) => {
                     }
                 </FormSelect>
             </InputGroup>
-            <InputGroup>
+            <InputGroup className={"mt-2 mb-2"}>
                 <InputGroup.Text>Description</InputGroup.Text>
                 <FormControl type={"textarea"} onChange={e => setDescription(e.target.value)} required/>
             </InputGroup>
-            <InputGroup>
+            <InputGroup className={"mt-2 mb-2"}>
                 <InputGroup.Text>Max energy</InputGroup.Text>
                 <FormControl type={"input"} onChange={e => setMaxEnergy(parseFloat(e.target.value))} required/>
             </InputGroup>
-            <Button type={"submit"} variant={"success"}>Save</Button>
-            <Button onClick={() => props.setShow(false)} variant={"danger"}>Close</Button>
+            <Button type={"submit"} variant={"success"} className={"me-2"} >Save</Button>
+            <Button onClick={() => props.setShow(false)} variant={"danger"} className={"me-2"}>Close</Button>
         </Form>
     )
 }

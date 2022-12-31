@@ -2,20 +2,22 @@ import {useState} from "react";
 import {Col, Row} from "react-bootstrap";
 import {DeviceInfoCard} from "../DeviceInfoCard/DeviceInfoCard";
 import './DevicesGridLayout.css';
+import {useNavigate} from "react-router-dom";
 
 export const DevicesGridLayout = (props) => {
     const [devices, setDevices] = useState(props.info);
     const [measurements, setMeasurements] = useState(props.sensorData);
     const [status, setStatus] = useState(props.status);
+    const navigate = useNavigate();
 
     const onSelectDevice = (deviceId) => {
-        // todo
+        // todo: navigate to device details page
         console.log(`Selected device with id ${deviceId}!`);
     }
 
     const onEditDevice = (deviceId) => {
-        // todo
         console.log(`Editing device with id ${deviceId}!`);
+        props.onEdit(deviceId);
     }
 
     const onToggleDevice = (deviceId) => {
