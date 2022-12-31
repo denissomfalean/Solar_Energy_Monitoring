@@ -2,7 +2,7 @@ import "./DevicesPage.css";
 import {SideNavigation} from "../../layouts/SideNavigation";
 import {DevicesGridLayout} from "../../components/devices/DevicesGridLayout/DevicesGridLayout";
 import devicesDataJson from '../../resources/data/DevicesData.json'
-import deviceStatusJson from '../../resources/data/DeviceStatusData.json'
+import devicesStatusJson from '../../resources/data/DeviceStatusData.json'
 import sensorDataJson from '../../resources/data/SensorData.json'
 import {Button, Modal} from "react-bootstrap";
 import {DeviceForm} from "../../components/devices/DeviceForm/DeviceForm";
@@ -13,7 +13,7 @@ export const DevicesPage = () => {
     const [formTitle, setFormTitle] = useState("");
     const [selectedDevice, setSelectedDevice] = useState(0);
     const [devicesData, setDevicesData] = useState(devicesDataJson);
-    const [deviceStatus, setDeviceStatus] = useState(deviceStatusJson);
+    const [devicesStatus, setDevicesStatus] = useState(devicesStatusJson);
     const [sensorData, setSensorData] = useState(sensorDataJson);
 
     const onAddDevice = () => {
@@ -24,14 +24,16 @@ export const DevicesPage = () => {
     }
 
     const saveChanges = (deviceData) => {
-        if (deviceData.id === undefined || deviceData.id.length === 0) {
+        if (deviceData.id === undefined) {
             const nextId = devicesData.length + 1;
             deviceData.id = nextId.toString();
-            setDeviceStatus(prevState => {return {...prevState, [nextId]: {on: false}}});
+            setDevicesStatus(prevState => {
+                return {...prevState, [nextId]: {on: false}}
+            });
             setDevicesData(prevState => [...prevState, deviceData]);
             console.log(`Added device with id ${deviceData.id}!`);
         } else {
-            let others = devicesData.map(d => d.id === deviceData.id? deviceData:d);
+            let others = devicesData.map(d => d.id === deviceData.id ? deviceData : d);
             setDevicesData(others);
             console.log(`Updated device with id ${deviceData.id}!`);
         }
@@ -48,11 +50,26 @@ export const DevicesPage = () => {
         }
     }
 
+    const onDeleteDevice = (id) => {
+        console.log(`Delete device with id ${id}!`);
+        const existingDevice = devicesData.find(d => d.id === id);
+        if (existingDevice === undefined) {
+            alert(`Failed to delete device with id ${id}!`);
+        }else {
+            const otherDevicesData = devicesData.filter(d => d.id !== id);
+            setDevicesData(otherDevicesData);
+            delete devicesStatus[id];
+            setDevicesStatus(devicesStatus);
+            setShowForm(false);
+            alert(`Deleted device with id ${id}!`);
+        }
+    }
+
     const onChangeDeviceStatus = (id) => {
-        const currStatus = deviceStatus[id].on;
+        const currStatus = devicesStatus[id].on;
         console.log(`Turn device with id ${id} ${currStatus ? "off" : "on"}!`);
-        deviceStatus[id].on = !currStatus;
-        setDeviceStatus(deviceStatus);
+        devicesStatus[id].on = !currStatus;
+        setDevicesStatus(devicesStatus);
     }
 
     return (
@@ -69,12 +86,13 @@ export const DevicesPage = () => {
                         <Modal.Title>{formTitle}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <DeviceForm setShow={setShowForm} data={selectedDevice} onSave={saveChanges}/>
+                        <DeviceForm setShow={setShowForm} data={selectedDevice} onSave={saveChanges}
+                                    onDelete={onDeleteDevice}/>
                     </Modal.Body>
                 </Modal>
 
                 <DevicesGridLayout info={devicesData}
-                                   status={deviceStatus}
+                                   status={devicesStatus}
                                    sensorData={sensorData}
                                    onEdit={onEditDevice}
                                    onChangeStatus={onChangeDeviceStatus}
