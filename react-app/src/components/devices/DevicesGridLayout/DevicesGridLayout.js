@@ -5,9 +5,6 @@ import './DevicesGridLayout.css';
 import {useNavigate} from "react-router-dom";
 
 export const DevicesGridLayout = (props) => {
-    const [devices, setDevices] = useState(props.info);
-    const [measurements, setMeasurements] = useState(props.sensorData);
-    const [status, setStatus] = useState(props.status);
     const navigate = useNavigate();
 
     const onSelectDevice = (deviceId) => {
@@ -16,17 +13,15 @@ export const DevicesGridLayout = (props) => {
     }
 
     const onEditDevice = (deviceId) => {
-        console.log(`Editing device with id ${deviceId}!`);
         props.onEdit(deviceId);
     }
 
     const onToggleDevice = (deviceId) => {
-        // todo
-        console.log(`Turn device with id ${deviceId} on/off!`);
+        props.onChangeStatus(deviceId);
     }
 
     function getCurrentEnergy(deviceId) {
-        const deviceMeasurements = measurements.filter(measurement => measurement.id === deviceId)
+        const deviceMeasurements = props.sensorData.filter(measurement => measurement.id === deviceId)
             .map(measurement => measurement.energy);
         const length = deviceMeasurements.length;
 
@@ -37,7 +32,7 @@ export const DevicesGridLayout = (props) => {
     const displaySingleDevice = (deviceInfo) =>
         <Col className={"p-3"} key={deviceInfo.id}>
             <DeviceInfoCard info={deviceInfo}
-                            status={status[deviceInfo.id]}
+                            status={props.status[deviceInfo.id]}
                             currentEnergy={getCurrentEnergy(deviceInfo.id)}
                             onSelectDevice={onSelectDevice}
                             onEditDevice={onEditDevice}
@@ -46,7 +41,7 @@ export const DevicesGridLayout = (props) => {
 
     return (
         <Row sm={"3"} className={"align-items-stretch justify-content-start"}>
-            {devices.map(displaySingleDevice)}
+            {props.info.map(displaySingleDevice)}
         </Row>
     )
 }

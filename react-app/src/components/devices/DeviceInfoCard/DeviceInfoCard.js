@@ -21,7 +21,7 @@ export const DeviceInfoCard = (props) => {
                 <Card.Subtitle>{props.info.description}</Card.Subtitle>
                 <p>Max: {props.info.maxEnergy} kW/h</p>
                 <div className={"d-flex justify-content-between align-items-center"}>
-                    <Toggle defaultChecked={props.status.on}
+                    <Toggle defaultChecked={props.status!== undefined? props.status.on:false}
                             onChange={() => props.onToggleDevice(props.info.id)}/>
                     <div className={"d-flex justify-content-end"}>
                         <BsBarChartLine/>
