@@ -1,0 +1,12 @@
+.report-info-card{
+    width:  15rem;
+    min-height: 10rem;
+}
+.calendar_date_picker {
+    color: grey;
+    text-decoration:underline;
+}
+.calendar_date_picker:hover{
+    color:black;
+    cursor:pointer;
+}
