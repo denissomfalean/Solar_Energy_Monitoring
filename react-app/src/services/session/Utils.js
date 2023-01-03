@@ -8,7 +8,7 @@ export const UserRoles = {
 }
 
 export function isLoggedIn() {
-    return getSessionItem(SessionStorageKeys.USER) !== null;
+    return  getSessionItem(SessionStorageKeys.USER) !== null;
 }
 
 export function isAuthorized(authority) {
