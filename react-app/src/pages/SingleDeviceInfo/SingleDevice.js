@@ -45,8 +45,6 @@ export const SingleDevice = (props) => {
 
     const [data,setData] = useState(makeData)
 
-
-
     useEffect(()=>{
         setLabels(makeLabels())
     },[date])

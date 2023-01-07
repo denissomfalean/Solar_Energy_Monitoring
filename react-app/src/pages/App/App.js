@@ -10,8 +10,8 @@ const App = () => {
     }
     return (
         <div className="App">
-            {/*<SingleDevice title={"Washing Machine"} lineChartData = {singleDeviceLineChartData}/>*/}
-            <DevicesPage/>
+            <SingleDevice title={"Washing Machine"} lineChartData = {singleDeviceLineChartData}/>
+            {/*<DevicesPage/>*/}
         </div>
     );
 }

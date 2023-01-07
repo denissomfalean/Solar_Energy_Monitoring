@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -28,19 +28,26 @@ export const options = {
     },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+export function BarChart(props) {
 
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: 'Dataset 1',
-            data: [1,2,3,4,5,6,7],
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-        }
-    ],
-};
+    const [labels,setLabels] = useState(['January', 'February', 'March', 'April', 'May', 'June', 'July']);
 
-export function BarChart() {
+    const data = {
+        labels,
+        datasets: [
+            {
+                label: 'Dataset 1',
+                data: [1,2,3,4,5,6,7],
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            }
+        ],
+    };
+
+    const makeLabels = () => {
+
+
+
+    }
+
     return <Bar options={options} data={data} />;
 }
