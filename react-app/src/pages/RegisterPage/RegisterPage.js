@@ -1,4 +1,4 @@
-import "./RegisterPage.js";
+import './RegisterPage.css'
 
 export const RegisterPage = () => {
   return (
