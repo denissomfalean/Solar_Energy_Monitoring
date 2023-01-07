@@ -1,6 +1,30 @@
-import './RegisterPage.css'
+import "./RegisterPage.css";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../services/session/userService";
 
 export const RegisterPage = () => {
+  const navigate = useNavigate();
+
+  const onSignUp = () => {
+    let enteredEmail = document.getElementById("exampleInputEmail1").value;
+    let enteredName = document.getElementById("name").value;
+    let enteredAddress = document.getElementById("address").value;
+
+    let enteredPassword = document.getElementById(
+      "exampleInputPassword1"
+    ).value;
+    let repeteadPassword = document.getElementById(
+      "exampleInputPassword2"
+    ).value;
+
+    if (enteredPassword === repeteadPassword) {
+      registerUser(enteredEmail, enteredPassword, enteredName, enteredAddress);
+      navigate("/home");
+    } else {
+      alert("Passwords do not match!");
+    }
+  };
+
   return (
     <div id="main-wrapper" class="container">
       <div class="row justify-content-center">
@@ -28,6 +52,14 @@ export const RegisterPage = () => {
                     />
                   </div>
                   <div class="form-group mb-4">
+                    <label htmlFor="name">Name</label>
+                    <input type="text" class="form-control" id="name" />
+                  </div>
+                  <div class="form-group mb-4">
+                    <label htmlFor="address">Address</label>
+                    <input type="text" class="form-control" id="address" />
+                  </div>
+                  <div class="form-group mb-4">
                     <label htmlFor="exampleInputPassword1">Password</label>
                     <input
                       type="password"
@@ -36,14 +68,20 @@ export const RegisterPage = () => {
                     />
                   </div>
                   <div class="form-group mb-5">
-                    <label htmlFor="exampleInputPassword2">Repeat Password</label>
+                    <label htmlFor="exampleInputPassword2">
+                      Repeat Password
+                    </label>
                     <input
                       type="password"
                       class="form-control"
                       id="exampleInputPassword2"
                     />
                   </div>
-                  <button type="submit" class="btn btn-primary btn-theme">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-theme"
+                    onClick={onSignUp}
+                  >
                     Sign Up
                   </button>
                 </form>
