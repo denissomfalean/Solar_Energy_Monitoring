@@ -1,6 +1,21 @@
 import "./LoginPage.css";
+import { Link, useNavigate } from "react-router-dom";
+import { areCredentialsCorrect } from "../../services/session/userService.js"
 
 export const LoginPage = () => {
+
+  const navigate = useNavigate();
+  
+  const onLogin = () => {
+    let enteredEmail = document.getElementById("exampleInputEmail1").value;
+    let eneteredPassword = document.getElementById("exampleInputPassword1").value;
+
+    if(areCredentialsCorrect(enteredEmail,eneteredPassword)){
+      navigate("/home");
+    }else{
+      alert('Incorrect Credentials!');
+    }
+  };
 
   return (
     <div id="main-wrapper" className="container">
@@ -36,13 +51,19 @@ export const LoginPage = () => {
                       id="exampleInputPassword1"
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary btn-theme">
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-theme"
+                    onClick={onLogin}
+                  >
                     Login
                   </button>
                 </form>
                 <p className="text-muted text-center mt-3 mb-0">
                   Don't have an account?
-                  Register
+                  <Link className="btn-primary" to="/register">
+                    Register
+                  </Link>
                 </p>
               </div>
             </div>
