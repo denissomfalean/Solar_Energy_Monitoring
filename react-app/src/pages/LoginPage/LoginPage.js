@@ -1,6 +1,7 @@
 import "./LoginPage.css";
 
 export const LoginPage = () => {
+
   return (
     <div id="main-wrapper" className="container">
       <div className="row justify-content-center">
@@ -19,7 +20,7 @@ export const LoginPage = () => {
                   Enter your email address and password to access your account.
                 </p>
                 <form>
-                  <div className="form-group">
+                  <div className="form-group mb-4">
                     <label htmlFor="exampleInputEmail1">Email address</label>
                     <input
                       type="email"
@@ -41,9 +42,7 @@ export const LoginPage = () => {
                 </form>
                 <p className="text-muted text-center mt-3 mb-0">
                   Don't have an account?
-                  <a href="register.html" className="text-primary ml-1">
-                    register
-                  </a>
+                  Register
                 </p>
               </div>
             </div>
