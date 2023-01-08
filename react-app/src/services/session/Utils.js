@@ -1,5 +1,6 @@
 export const SessionStorageKeys = {
-    USER: 'user'
+    USER: 'user',
+    USERS: 'users'
 }
 
 export const UserRoles = {
