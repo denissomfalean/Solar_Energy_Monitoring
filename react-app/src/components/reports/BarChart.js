@@ -43,11 +43,5 @@ export function BarChart(props) {
         ],
     };
 
-    const makeLabels = () => {
-
-
-
-    }
-
     return <Bar options={options} data={data} />;
 }
