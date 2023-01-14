@@ -72,5 +72,9 @@ export function addDefaultUsers() {
   setSessionItem(SessionStorageKeys.USERS, users);
 }
 
+export function getLoggedUser() {
+  return getSessionItem(SessionStorageKeys.USER);
+}
+
 
 
