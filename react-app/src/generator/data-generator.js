@@ -6,9 +6,9 @@ function generateHourlyDataFor3Days() {
 
 //for 7 days
 //[{day:"Monday",consumption:12}, ...]
-function generateWeeklyData() {
+export function generateWeeklyData() {
   let week = [];
-  for (i = 0; i < 7; i++) {
+  for (let i = 0; i < 7; i++) {
     let weekDay = {
       day: getWeekDay(i),
       consumption: randomIntFromInterval(0, 20),
@@ -20,9 +20,9 @@ function generateWeeklyData() {
 
 //for month Data
 //[{day:1, consumption:11}, ...]
-function generateMontlyData() {
+export function generateMontlyData() {
   let monthData = [];
-  for (i = 0; i < 31; i++) {
+  for (let i = 0; i < 31; i++) {
     let dayData = {
       day: i + 1,
       consumption: randomIntFromInterval(0, 20),
@@ -34,9 +34,9 @@ function generateMontlyData() {
 
 //for year data
 //[{month:"January", consumption:11}, ...]
-function generateYearlyData() {
+export function generateYearlyData() {
   let yearData = [];
-  for (i = 0; i < 12; i++) {
+  for (let i = 0; i < 12; i++) {
     let monthData = {
       month: getMonth(i),
       consumption: randomIntFromInterval(0, 20),
@@ -118,16 +118,16 @@ function getWeekDay(index) {
 //generate datas for a given number of days
 function generateMultipleDaysHourlyData(days) {
   let datas = [];
-  for (i = 0; i < days; i++) {
+  for (let i = 0; i < days; i++) {
     datas.push(generateDailyData(7));
   }
   return datas;
 }
 
 //generate data for a day in a guen number of hours
-function generateDailyData(hours) {
+export function generateDailyData(hours) {
   let data = [];
-  for (i = 0; i < hours; i++) {
+  for (let i = 0; i < hours; i++) {
     let dailyData = {
       hour: i + 12,
       consumption: randomIntFromInterval(0, 20),

@@ -3,6 +3,7 @@ import {BsBarChartLine, BsCash, BsSun} from "react-icons/bs";
 import {ReportLayout} from "../../layouts/reports/ReportLayout";
 import {SideNavigation} from "../../layouts/SideNavigation";
 import {types} from "../../resources/ReportsPageTypes"
+import {generateDailyData} from "../../generator/data-generator"
 
 export const ReportsPageBuilder = (props) => {
 
@@ -30,14 +31,26 @@ export const ReportsPageBuilder = (props) => {
 
     const [lineChartLabels,setLineChartLabels] = useState(makeLineChartLabels())
 
+    const makeLineChartDatasetTitle = () =>{
+
+        let title = "Max Energy (kwh)";
+        props.pageType === types[1] ? title = "Consumed Energy (kW)" : props.pageType === types[2] ? title = "Produced Energy (kW)" : "Energy Cost"
+        return title;
+
+    }
+
+    const [lineChartDatasetTitle,setLineChartDatasetTitle] = useState(makeLineChartDatasetTitle())
+
     const makeLineChartData = () =>{
         let labels = lineChartLabels;
+        let values = generateDailyData.map(dailyData => dailyData.consumption);
+
         let lineChartDataForReportLayout = {
             labels,
             datasets: [
                 {
-                    label: props.lineChartData.datasetTitle,
-                    data: props.lineChartData.values,
+                    label: lineChartDatasetTitle,
+                    data: values,
                     borderColor: 'rgb(255, 200, 0)',
                     backgroundColor: 'rgba(0, 0, 255, 0.5)',
                 }
