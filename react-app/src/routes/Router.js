@@ -7,8 +7,7 @@ import {DeviceForm} from "../components/devices/DeviceForm/DeviceForm";
 import {HomePage} from "../pages/HomePage/HomePage";
 import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {RegisterPage} from "../pages/RegisterPage/RegisterPage";
-import {types} from "../resources/ReportsPageTypes";
-import {ReportsPageBuilder} from "../pages/Reports/ReportsPageBuilder";
+import {UserProfilePage} from "../pages/UserProfilePage/UserProfilePage";
 
 export const Router = () => {
     return (
@@ -18,12 +17,11 @@ export const Router = () => {
                 <Route path="/home" element={<ProtectedPage component={<HomePage/>}/>}/>
                 <Route path="/login" element={isLoggedIn() ? <HomePage/> : <LoginPage/>}/>
                 <Route path="/register" element={<RegisterPage/>}/>
+                <Route path="/account" element={<UserProfilePage/>}/>
                 <Route path="/devices"
                        element={<ProtectedPage component={<DevicesPage/>}/>}/>
                 <Route path="/devices/new"
                        element={<ProtectedPage component={<DeviceForm/>}/>}/>
-                <Route path="/device-page"
-                       element={<ProtectedPage component={<ReportsPageBuilder title={"Washing Machine"} pageType = {types[0]}/>}/>}/>
             </Routes>
         </BrowserRouter>
     );
