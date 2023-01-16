@@ -1,13 +1,10 @@
 import './App.css';
-import {DevicesPage} from "../DevicesPage/DevicesPage";
-import {ReportsPageBuilder} from "../Reports/ReportsPageBuilder";
-import {types} from "../../resources/ReportsPageTypes"
+import {Router} from "../../routes/Router";
 
 const App = () => {
     return (
         <div className="App">
-            <ReportsPageBuilder title={"Washing Machine"} pageType = {types[0]}/>
-            {/*<DevicesPage/>*/}
+            <Router/>
         </div>
     );
 }

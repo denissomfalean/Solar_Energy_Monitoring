@@ -8,7 +8,7 @@ export const DevicesGridLayout = (props) => {
     const navigate = useNavigate();
 
     const onSelectDevice = (deviceId) => {
-        // todo: navigate to device details page
+        navigate("/device-page");
         console.log(`Selected device with id ${deviceId}!`);
     }
 
