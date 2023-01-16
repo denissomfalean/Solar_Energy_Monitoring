@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, Row} from "react-bootstrap";
 import {ReportInfoCard} from "../../components/reports/reportInfoCard/ReportInfoCard"
 import './ReportLayoutStyle.css'
 import Calendar from "react-calendar";
@@ -15,6 +15,9 @@ export const ReportLayout = (props) => {
     const [reportInfoCards,setReportInfoCards] = useState(props.reportInfoCards)
     const [calendarVisibility,setCalendarVisibility] = useState(false)
 
+    const[period,setPeriod] = useState("weekly");
+    const [periodAdaptedBarChartData, setPeriodAdaptedBarChartData] = useState(props.barChartData.weekly);
+
     useEffect(()=>{
         setReportInfoCards(props.reportInfoCards)
     },[props.reportInfoCards])
@@ -29,6 +32,10 @@ export const ReportLayout = (props) => {
 
     const handleDateClickedOnPage = () =>{
         setCalendarVisibility(!calendarVisibility);
+    }
+
+    const changeBarChartPeriod = (period) =>{
+            setPeriod(period);
     }
 
     return(
@@ -53,7 +60,7 @@ export const ReportLayout = (props) => {
                     <Col className={"p-3"} key={555}>
                         <ReportInfoCard
                             paragraphText="Selected Maximum Budget"
-                            icons={[<BsCash/>]}
+                                icons={[<BsCash className={"card-icon"}/>]}
                             data={[{
                                 value: 200,
                                 measurementUnit:"RON"
@@ -66,7 +73,14 @@ export const ReportLayout = (props) => {
             <LineChart data = {props.lineChartData}/>
 
             {props.pageType !== types[3] &&
-            <BarChart data = {props.barChartData}/>
+              <>
+                <Row style={{marginTop:"2rem"}}>
+                    <Col md={"auto"}><Button id = {"weeklyButton"} className={period==="weekly" ? "active-period" : "period-selection-button"} onClick={()=>{setPeriodAdaptedBarChartData(props.barChartData.weekly);setPeriod("weekly");}}>This week</Button></Col>
+                    <Col md={"auto"}><Button id = {"monthlyButton"} className={period==="monthly" ? "active-period" :"period-selection-button"} onClick={()=>{setPeriodAdaptedBarChartData(props.barChartData.monthly);setPeriod("monthly");}}>This month</Button></Col>
+                    <Col md={"auto"}><Button id = {"yearlyButton"} className={period==="yearly" ? "active-period" :"period-selection-button"} onClick={()=>{setPeriodAdaptedBarChartData(props.barChartData.yearly);setPeriod("yearly");}}>This year</Button></Col>
+                </Row>
+            <BarChart data = {periodAdaptedBarChartData}/>
+              </>
             }
 
         </Container>

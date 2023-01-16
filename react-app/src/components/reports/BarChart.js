@@ -43,5 +43,5 @@ export function BarChart(props) {
         ],
     };
 
-    return <Bar options={options} data={data} />;
+    return <Bar options={options} data={props.data} />;
 }

@@ -9,8 +9,8 @@ export const ReportInfoCard = (props) => {
 
                 {props.data.map((record,index) =>(
                     <div className={"d-flex justify-content-end"} key={"report-info-card="+index}>
-                        <h4>{record.value + record.measurementUnit}</h4>
                         {props.icons[index]}
+                        <h5 className={"report-info-card-text"}>{record.value + record.measurementUnit}</h5>
                     </div>
                 ))}
 

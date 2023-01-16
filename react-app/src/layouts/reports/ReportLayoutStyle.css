@@ -1,7 +1,14 @@
 .report-info-card{
     width:  15rem;
     min-height: 10rem;
+    border-color:#055160 !important;
+    border-width:2px !important;
 }
+.report-info-card-text{
+    color:#055160 !important;
+}
+
+
 .calendar_date_picker {
     color: grey;
     text-decoration:underline;
@@ -9,4 +16,21 @@
 .calendar_date_picker:hover{
     color:black;
     cursor:pointer;
+}
+.period-selection-button{
+    background-color: grey !important;
+    color:white !important;
+    border-width: 0 !important;
+    height: 90%;
+}
+.active-period{
+    background-color: #ffc800 !important;
+    color:white !important;
+    border-width: 0 !important;
+    height: 90%;
+}
+.card-icon{
+    height:2rem;
+    width:2rem;
+    margin-right:1rem;
 }
