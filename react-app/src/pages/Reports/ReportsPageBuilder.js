@@ -32,7 +32,7 @@ export const ReportsPageBuilder = (props) => {
 
     const makeCards = () =>{
 
-        let paragraphTextCard1 = "Max"
+        let paragraphTextCard1 = "Desired maximum consumption"
         let iconArrayCard1 = [<BsBarChartLine className={"card-icon"}/>]
         let dataArrayCard1 = [{
             value: makeMax(),
@@ -46,6 +46,8 @@ export const ReportsPageBuilder = (props) => {
             }]
             paragraphTextCard1 = "Feed-in grid"
         }
+        else{ if(props.pageType === types[1]) {paragraphTextCard1 = "Peak consumption"}
+              else {if(props.pageType === types[2]){paragraphTextCard1 = "Peak production"}}  }
 
         let card1 = {
             id:0,
