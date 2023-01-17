@@ -72,49 +72,49 @@ export const UserProfilePage = () => {
       <div className={"content flex justify-content-center align-items-center"}>
         <hr />
         <div className="row">
-          <div class="card mb-4 mb-xl-0">
-            <div class="card-header">Profile Picture</div>
-            <div class="card-body text-center">
+          <div className="card mb-4 mb-xl-0">
+            <div className="card-header">Profile Picture</div>
+            <div className="card-body text-center">
               <img
-                class="img-account-profile rounded-circle mb-2"
+                className="img-account-profile rounded-circle mb-2"
                 src="http://bootdey.com/img/Content/avatar/avatar1.png"
                 alt=""
               />
             </div>
           </div>
-          <div class="card mb-4">
-            <div class="card-header">Account Details</div>
-            <div class="card-body">
-              <div class="mb-3">
-                <label class="small mb-1" for="inputEmail">
+          <div className="card mb-4">
+            <div className="card-header">Account Details</div>
+            <div className="card-body">
+              <div className="mb-3">
+                <label className="small mb-1" htmlFor="inputEmail">
                   Email
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputEmail"
                   type="email"
                   value=""
                   readOnly
                 />
               </div>
-              <div class="mb-3">
-                <label class="small mb-1" for="inputName">
+              <div className="mb-3">
+                <label className="small mb-1" htmlFor="inputName">
                   Name
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputName"
                   type="text"
                   value=""
                   readOnly
                 />
               </div>
-              <div class="mb-3">
-                <label class="small mb-1" for="inputAddress">
+              <div className="mb-3">
+                <label className="small mb-1" htmlFor="inputAddress">
                   Address
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputAddress"
                   type="text"
                   value=""
@@ -123,39 +123,39 @@ export const UserProfilePage = () => {
               </div>
             </div>
           </div>
-          <div class="card mb-4">
-            <div class="card-header">Energy Provider</div>
-            <div class="card-body">
-              <div class="mb-2">
-                <label class="small mb-1" for="inputEnergyName">
+          <div className="card mb-4">
+            <div className="card-header">Energy Provider</div>
+            <div className="card-body">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="inputEnergyName">
                   Name
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputEnergyName"
                   type="text"
                   value=""
                   readOnly
                 />
               </div>
-              <div class="mb-2">
-                <label class="small mb-1" for="inputEnergyAddress">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="inputEnergyAddress">
                   Address
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputEnergyAddress"
                   type="text"
                   value=""
                   readOnly
                 />
               </div>
-              <div class="mb-2">
-                <label class="small mb-1" for="inputEnergyRegistration">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="inputEnergyRegistration">
                   Registration
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputEnergyRegistration"
                   type="text"
                   value=""
@@ -164,39 +164,39 @@ export const UserProfilePage = () => {
               </div>
             </div>
           </div>
-          <div class="card mb-4">
-            <div class="card-header">Contract Status</div>
-            <div class="card-body">
-              <div class="mb-2">
-                <label class="small mb-1" for="inputEnergyFeedIn">
+          <div className="card mb-4">
+            <div className="card-header">Contract Status</div>
+            <div className="card-body">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="inputEnergyFeedIn">
                   Feed-in-Traffic
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputEnergyFeedIn"
                   type="text"
                   value=""
                   readOnly
                 />
               </div>
-              <div class="mb-2">
-                <label class="small mb-1" for="inputEnergyTraffic">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="inputEnergyTraffic">
                   Energy-Traffic
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputEnergyTraffic"
                   type="text"
                   value=""
                   readOnly
                 />
               </div>
-              <div class="mb-2">
-                <label class="small mb-1" for="inputEnergyStatus">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="inputEnergyStatus">
                   Contract Status
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="inputEnergyStatus"
                   type="text"
                   value=""
@@ -205,15 +205,15 @@ export const UserProfilePage = () => {
               </div>
             </div>
           </div>
-          <div class="card mb-4">
-            <div class="card-header">Available Providers</div>
-            <div class="card-body">
-              <div class="mb-2">
-                <label class="small mb-1" for="provider1">
+          <div className="card mb-4">
+            <div className="card-header">Available Providers</div>
+            <div className="card-body">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="provider1">
                   Provider
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="provider1"
                   type="button"
                   onClick={onAddProvider1}
@@ -221,12 +221,12 @@ export const UserProfilePage = () => {
                   readOnly
                 />
               </div>
-              <div class="mb-2">
-                <label class="small mb-1" for="provider2">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="provider2">
                   Provider
                 </label>
                 <input
-                  class="form-control"
+                  className="form-control"
                   id="provider2"
                   type="button"
                   onClick={onAddProvider2}
@@ -234,13 +234,13 @@ export const UserProfilePage = () => {
                   readOnly
                 />
               </div>
-              <div class="mb-2">
-                <label class="small mb-1" for="provider3">
+              <div className="mb-2">
+                <label className="small mb-1" htmlFor="provider3">
                   Provider
                 </label>
                 <input
                   id="provider3"
-                  class="form-control"
+                  className="form-control"
                   type="button"
                   onClick={onAddProvider3}
                   value=""
