@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Col, Container, OverlayTrigger, Popover, Row} from "react-bootstrap";
 import {ReportInfoCard} from "../../components/reports/reportInfoCard/ReportInfoCard"
 import './ReportLayoutStyle.css'
 import Calendar from "react-calendar";
@@ -14,7 +14,6 @@ import {getSelectedDeviceDescription} from "../../services/session/userService";
 export const ReportLayout = (props) => {
 
     const [reportInfoCards,setReportInfoCards] = useState(props.reportInfoCards)
-    const [calendarVisibility,setCalendarVisibility] = useState(false)
 
     const[period,setPeriod] = useState("weekly");
     const [periodAdaptedBarChartData, setPeriodAdaptedBarChartData] = useState(props.barChartData.weekly);
@@ -31,10 +30,6 @@ export const ReportLayout = (props) => {
                 data={infoCard.data}/>
             </Col>
 
-    const handleDateClickedOnPage = () =>{
-        setCalendarVisibility(!calendarVisibility);
-    }
-
     return(
         <Container>
             <h1>{props.title}</h1>
@@ -46,11 +41,13 @@ export const ReportLayout = (props) => {
 
             }
             <br/>
-            <span onClick={handleDateClickedOnPage} className={"calendar_date_picker"}>{props.date.getDate()}/{props.date.getMonth() + 1}/{props.date.getFullYear()}</span>
-
-            {calendarVisibility &&
-                <Calendar onChange={props.setDate} value={props.date}/>
-            }
+            <h5>Select a date:</h5>
+            <OverlayTrigger trigger="click"
+                            placement="bottom-start"
+                            overlay={<Popover><Calendar onChange={props.setDate} value={props.date}/></Popover>}>
+                        <span
+                            className={"calendar_date_picker"}>{props.date.getDate()}/{props.date.getMonth() + 1}/{props.date.getFullYear()}</span>
+            </OverlayTrigger>
 
             <Row sm={3}>
                 {reportInfoCards.map(displayReportInfoCards)}
