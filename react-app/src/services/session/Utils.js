@@ -10,6 +10,12 @@ export const UserRoles = {
     TENANT: 'tenant'
 }
 
+export const DeviceProperties = {
+    TITLE:'title',
+    MAX_CONSUMPTION:'max',
+    DESCRIPTION:'description'
+}
+
 export function isLoggedIn() {
     return  getSessionItem(SessionStorageKeys.USER) !== null;
 }

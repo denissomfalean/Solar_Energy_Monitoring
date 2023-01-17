@@ -8,6 +8,7 @@ import {LineChart} from "../../components/reports/LineChart";
 import {BarChart} from "../../components/reports/BarChart";
 import {types} from "../../resources/ReportsPageTypes"
 import {BsCash} from "react-icons/bs";
+import {getSelectedDeviceDescription} from "../../services/session/userService";
 
 
 export const ReportLayout = (props) => {
@@ -34,16 +35,17 @@ export const ReportLayout = (props) => {
         setCalendarVisibility(!calendarVisibility);
     }
 
-    const changeBarChartPeriod = (period) =>{
-            setPeriod(period);
-    }
-
     return(
         <Container>
             <h1>{props.title}</h1>
             <hr/>
             <br/>
+            {props.pageType === types[0] &&
 
+                <div className={"description-label"}>{getSelectedDeviceDescription()}</div>
+
+            }
+            <br/>
             <span onClick={handleDateClickedOnPage} className={"calendar_date_picker"}>{props.date.getDate()}/{props.date.getMonth() + 1}/{props.date.getFullYear()}</span>
 
             {calendarVisibility &&

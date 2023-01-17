@@ -1,5 +1,6 @@
 import {
   SessionStorageKeys,
+  DeviceProperties,
   getSessionItem,
   setSessionItem,
   UserRoles,
@@ -74,6 +75,24 @@ export function addDefaultUsers() {
 
 export function getLoggedUser() {
   return getSessionItem(SessionStorageKeys.USER);
+}
+
+export function getSelectedDeviceTitle(){
+  return getSessionItem(DeviceProperties.TITLE);
+}
+
+export function getSelectedDeviceMaxConsumption(){
+  return getSessionItem(DeviceProperties.MAX_CONSUMPTION);
+}
+
+export function getSelectedDeviceDescription(){
+  return getSessionItem(DeviceProperties.DESCRIPTION);
+}
+
+export function setSelectedDeviceProperties (title,max_cons,description) {
+  setSessionItem(DeviceProperties.TITLE, title);
+  setSessionItem(DeviceProperties.MAX_CONSUMPTION, max_cons);
+  setSessionItem(DeviceProperties.DESCRIPTION, description);
 }
 
 

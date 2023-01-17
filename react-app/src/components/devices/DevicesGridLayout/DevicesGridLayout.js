@@ -1,15 +1,15 @@
-import {useState} from "react";
 import {Col, Row} from "react-bootstrap";
 import {DeviceInfoCard} from "../DeviceInfoCard/DeviceInfoCard";
 import './DevicesGridLayout.css';
 import {useNavigate} from "react-router-dom";
+import { setSelectedDeviceProperties } from "../../../services/session/userService";
 
 export const DevicesGridLayout = (props) => {
     const navigate = useNavigate();
 
-    const onSelectDevice = (deviceId) => {
-        navigate("/device-page");
-        console.log(`Selected device with id ${deviceId}!`);
+    const onSelectDevice = (deviceInfo) => {
+        setSelectedDeviceProperties(deviceInfo.name,deviceInfo.maxEnergy,deviceInfo.description);
+        navigate("/device-info-page");
     }
 
     const onEditDevice = (deviceId) => {

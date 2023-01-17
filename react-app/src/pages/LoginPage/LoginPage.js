@@ -11,7 +11,7 @@ export const LoginPage = () => {
     let eneteredPassword = document.getElementById("exampleInputPassword1").value;
 
     if(areCredentialsCorrect(enteredEmail,eneteredPassword)){
-      navigate("/home");
+      navigate("/account");
     }else{
       alert('Incorrect Credentials!');
     }

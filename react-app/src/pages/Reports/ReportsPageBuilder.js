@@ -4,25 +4,44 @@ import {ReportLayout} from "../../layouts/reports/ReportLayout";
 import '../../layouts/reports/ReportLayoutStyle.css'
 import {SideNavigation} from "../../layouts/SideNavigation";
 import {types} from "../../resources/ReportsPageTypes"
-import {generateDailyData,generateWeeklyData,generateMontlyData,generateYearlyData} from "../../generator/data-generator"
+import {generateDailyData,generateWeeklyData,generateMontlyData,generateYearlyData,randomIntFromInterval} from "../../generator/data-generator"
+import {
+    getSelectedDeviceMaxConsumption,
+    getSelectedDeviceTitle
+} from "../../services/session/userService";
 
 export const ReportsPageBuilder = (props) => {
 
-    const [title,setTitle] = useState(props.title)
     const [date, setDate] = useState(new Date());
+
+    const makeTitle = ()=>{
+        if (props.pageType===types[0]){
+            return getSelectedDeviceTitle();
+        }
+        else return props.pageType;
+    }
+
+    const [title,setTitle] = useState(makeTitle())
+
+    const makeMax = () =>{
+        if (props.pageType===types[0]){
+            return getSelectedDeviceMaxConsumption();
+        }
+        else return randomIntFromInterval(1,10);
+    }
 
     const makeCards = () =>{
 
         let paragraphTextCard1 = "Max"
         let iconArrayCard1 = [<BsBarChartLine className={"card-icon"}/>]
         let dataArrayCard1 = [{
-            value: 2.5,
+            value: makeMax(),
             measurementUnit:"kw/h"
         }]
         if(props.pageType === types[3]){
             iconArrayCard1 = [...iconArrayCard1,<BsCash className={"card-icon"}/>]
             dataArrayCard1 = [...dataArrayCard1,{
-                value: 0.91,
+                value: randomIntFromInterval(1,5),
                 measurementUnit:"RON/kWh"
             }]
             paragraphTextCard1 = "Feed-in grid"
@@ -36,14 +55,14 @@ export const ReportsPageBuilder = (props) => {
         }
 
         let iconArrayCard2 = [<BsSun className={"card-icon"}/>],
-            valueCard2 = ["4h 32min"],
+            valueCard2 = [randomIntFromInterval(0,23) + "h " + randomIntFromInterval(1,59) +"min"],
             measurementUnitCard2 = "",
             paragraphTextCard2="On-time";
 
         if(props.pageType !== types[0]){
 
             iconArrayCard2 = [<BsBarChartLine className={"card-icon"}/>];
-            valueCard2 = [500]
+            valueCard2 = [randomIntFromInterval(1,5)]
             measurementUnitCard2 = ["kW"]
 
             props.pageType === types[1] ? paragraphTextCard2 = "Total consumption" : paragraphTextCard2 = "Total production"
@@ -60,7 +79,7 @@ export const ReportsPageBuilder = (props) => {
         },]
         if(props.pageType === types[3]) {
             dataArrayCard2 = [...dataArrayCard2, {
-                value: 1.75,
+                value: randomIntFromInterval(1,5),
                 measurementUnit: "RON/kWh"
             }]
         }
@@ -73,7 +92,7 @@ export const ReportsPageBuilder = (props) => {
 
         let iconArrayCard3 = [<BsCash className={"card-icon"}/>]
         let dataArrayCard3 = [{
-            value: 200,
+            value: randomIntFromInterval(100,500),
             measurementUnit:"RON"
         },]
 
@@ -117,8 +136,10 @@ export const ReportsPageBuilder = (props) => {
     const makeLineChartDatasetTitle = () =>{
 
         let title = "Max Energy (kwh)";
-        props.pageType === types[1] ? title = "Consumed Energy (kW)" : props.pageType === types[2] ? title = "Produced Energy (kW)" : title = "Energy Cost"
-        return title;
+        if(props.pageType!==types[0]) {
+            props.pageType === types[1] ? title = "Consumed Energy (kW)" : props.pageType === types[2] ? title = "Produced Energy (kW)" : title = "Energy Cost"
+        }
+            return title;
 
     }
 
@@ -141,7 +162,7 @@ export const ReportsPageBuilder = (props) => {
         };
         if(props.pageType === types[3]){
             lineChartDataForReportLayout.datasets = [...lineChartDataForReportLayout.datasets,{
-                label: lineChartDatasetTitle,
+                label: "Maximum cost per kwh",
                 data: [5,5,5,5,5,5,5],
                 borderColor: 'rgb(53, 162, 235)',
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
@@ -154,6 +175,7 @@ export const ReportsPageBuilder = (props) => {
 
     useEffect(()=>{
         setLineChartLabels(makeLineChartLabels())
+        setCards(makeCards());
     },[date])
 
     useEffect(()=>{
@@ -228,12 +250,10 @@ export const ReportsPageBuilder = (props) => {
 
     return(
     <>
-
         <SideNavigation/>
         <div className={"content flex justify-content-center align-items-center"}>
             <ReportLayout title = {title} reportInfoCards = {cards} pageType = {props.pageType} lineChartData = {lineChartData} barChartData = {barChartData} date = {date} setDate = {setDate}/>
         </div>
-
     </>
     )
 }

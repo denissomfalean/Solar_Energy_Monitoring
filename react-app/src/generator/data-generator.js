@@ -1,8 +1,3 @@
-// for 3 days Data with 7 hours per day
-//[[{hour:12, consumption:7},{}, ...], ...]
-function generateHourlyDataFor3Days() {
-  return generateMultipleDaysHourlyData(3);
-}
 
 //for 7 days
 //[{day:"Monday",consumption:12}, ...]
@@ -138,6 +133,6 @@ export function generateDailyData(hours) {
 }
 
 // min and max included
-function randomIntFromInterval(min, max) {
+export function randomIntFromInterval(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }

@@ -34,3 +34,8 @@
     width:2rem;
     margin-right:1rem;
 }
+.description-label{
+    border-style:solid;
+    border-width:1px;
+    height:5rem;
+}
