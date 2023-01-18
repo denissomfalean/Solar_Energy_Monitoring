@@ -1,6 +1,6 @@
 import React from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {isLoggedIn} from "../services/session/Utils";
+import {isLoggedIn, SessionStorageKeys} from "../services/session/Utils";
 import {ProtectedPage} from "../components/ProtectedPage";
 import {DevicesPage} from "../pages/DevicesPage/DevicesPage";
 import {DeviceForm} from "../components/devices/DeviceForm/DeviceForm";
@@ -11,11 +11,16 @@ import {ReportsPageBuilder} from "../pages/Reports/ReportsPageBuilder";
 import {types} from "../resources/ReportsPageTypes";
 
 export const Router = () => {
+    const onLogout = () => {
+        sessionStorage.removeItem(SessionStorageKeys.USER);
+        return <LoginPage/>
+    }
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={isLoggedIn() ? <UserProfilePage/> : <LoginPage/>}/>
                 <Route path="/login" element={<LoginPage/>}/>
+                <Route path="/logout" element={onLogout()}/>
                 <Route path="/account" element={<ProtectedPage component={<UserProfilePage/>}/>}/>
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path="/devices"
